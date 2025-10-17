@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sero Bot Team</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@400;600&display=swap');
+
+/* Basis */
+* { margin:0; padding:0; box-sizing:border-box; user-select:none; }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#001f4d,#003366);
+    color: #cce0ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    color: #00bfff;
+    text-shadow: 0 0 20px #00bfff;
+    animation: glow 2s infinite alternate;
+}
+header p {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    color: #99d6ff;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Sections */
+section { width: 100%; max-width: 900px; margin-bottom: 3rem; text-align: center; }
+section h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #00bfff;
+    text-shadow: 0 0 8px #00bfff;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Buttons */
+button {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    background: #00bfff;
+    color: #001f4d;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,191,255,0.3);
+}
+button:hover {
+    background: #0095d1;
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0,191,255,0.5);
+}
+
+/* Inputs */
+input, textarea {
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 0.7rem;
+    width: 100%;
+    transition: 0.3s;
+}
+input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 12px #00bfff;
+    transform: scale(1.02);
+}
+
+/* Popup */
+#popupOverlay {
+    display: none;
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    transition: 0.3s;
+}
+#popupOverlay.show { display:flex; opacity:1; }
+#popupForm {
+    background: #00264d;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 480px;
+    text-align: left;
+    transform: scale(0.8);
+    transition: 0.3s;
+}
+#popupOverlay.show #popupForm { transform: scale(1); }
+#popupForm label { display:block; margin-top:1rem; margin-bottom:0.3rem; font-weight:600; }
+.closeBtn {
+    float:right; cursor:pointer; font-weight:bold; color:#00bfff; font-size:1.3rem;
+}
+
+/* Team Cards */
+.team-member {
+    background: #003366;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 12px;
+    display: inline-block;
+    transition: 0.3s;
+    color:#cce0ff;
+    box-shadow: 0 5px 15px rgba(0,191,255,0.2);
+}
+.team-member:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,191,255,0.5);
+}
+
+/* Animations */
+@keyframes glow { from{ text-shadow:0 0 5px #00bfff; } to{ text-shadow:0 0 25px #00bfff; } }
+@keyframes fadeIn { from{ opacity:0; transform:translateY(-10px); } to{ opacity:1; transform:translateY(0); } }
+
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<header>
+    <h1>Sero Bot Team</h1>
+    <p>Join and help improve Sero Bot!</p>
+</header>
+
+<section id="about">
+    <h2>About Sero Bot</h2>
+    <p>A powerful WhatsApp bot to manage groups, entertain, and provide utility commands. Help us keep it updated and user-friendly!</p>
+</section>
+
+<section id="apply">
+    <button id="openPopupBtn">Apply to Join</button>
+</section>
+
+<div id="popupOverlay">
+    <div id="popupForm">
+        <span class="closeBtn" id="closePopupBtn">&times;</span>
+        <h2>Application Form</h2>
+        <p>Minimum age: 12 years</p>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Your name" required>
+        <label for="age">Age</label>
+        <input type="number" id="age" placeholder="Your age" required min="12">
+        <label for="experience">Experience with Bots / Coding</label>
+        <textarea id="experience" placeholder="Your experience" rows="4" required></textarea>
+        <button id="submitApplication">Submit Application</button>
+    </div>
+</div>
+
+<section id="team">
+    <h2>Team Members</h2>
+    <div class="team-member">Ben - Owner</div>
+    <div class="team-member">Julian - Developer</div>
+    <div class="team-member">Finn - Developer</div>
+</section>
+
+<section id="credits">
+    <h2>Credits</h2>
+    <p>Website & Bot by Sero Bot Team. Inspired by our community.</p>
+</section>
+
+<script>
+const ownerNumber = '4916096883844'; 
+const popup = document.getElementById('popupOverlay');
+
+document.getElementById('openPopupBtn').addEventListener('click', () => popup.classList.add('show'));
+document.getElementById('closePopupBtn').addEventListener('click', () => popup.classList.remove('show'));
+window.addEventListener('click', e => { if(e.target === popup) popup.classList.remove('show'); });
+
+document.getElementById('submitApplication').addEventListener('click', () => {
+    const applicantName = document.getElementById('name').value;
+    const applicantAge = parseInt(document.getElementById('age').value);
+    const applicantExp = document.getElementById('experience').value;
+
+    if(applicantAge < 12){ alert('You must be at least 12 years old.'); return; }
+
+    const message = `Hello! I want to apply for the Sero Bot Team.%0A%0AName: ${applicantName}%0AAge: ${applicantAge}%0AExperience: ${applicantExp}`;
+    const whatsappLink = `https://wa.me/${ownerNumber}?text=${message}`;
+    window.open(whatsappLink, '_blank');
+});
+</script>
+
+</body>
+</html>
